@@ -1,9 +1,0 @@
-c:\users\user\documents\visual studio 2013\Projects\TreeBuilder\TreeBuilder\bin\Debug\TreeBuilder.exe.config
-c:\users\user\documents\visual studio 2013\Projects\TreeBuilder\TreeBuilder\bin\Debug\TreeBuilder.exe
-c:\users\user\documents\visual studio 2013\Projects\TreeBuilder\TreeBuilder\bin\Debug\TreeBuilder.pdb
-c:\users\user\documents\visual studio 2013\Projects\TreeBuilder\TreeBuilder\obj\Debug\TreeBuilder.csprojResolveAssemblyReference.cache
-c:\users\user\documents\visual studio 2013\Projects\TreeBuilder\TreeBuilder\obj\Debug\TreeBuilder.Properties.Resources.resources
-c:\users\user\documents\visual studio 2013\Projects\TreeBuilder\TreeBuilder\obj\Debug\TreeBuilder.csproj.GenerateResource.Cache
-c:\users\user\documents\visual studio 2013\Projects\TreeBuilder\TreeBuilder\obj\Debug\TreeBuilder.exe
-c:\users\user\documents\visual studio 2013\Projects\TreeBuilder\TreeBuilder\obj\Debug\TreeBuilder.pdb
-C:\Users\User\Documents\Visual Studio 2013\Projects\TreeBuilder\TreeBuilder\obj\Debug\TreeBuilder.TreeBuilder.resources

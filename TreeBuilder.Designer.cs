@@ -33,7 +33,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.btnSendRequest = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -47,10 +46,7 @@
             this.tbValue = new System.Windows.Forms.TextBox();
             this.tbParent = new System.Windows.Forms.TextBox();
             this.tbKey = new System.Windows.Forms.TextBox();
-            this.btnBuild = new System.Windows.Forms.Button();
-            this.tbJson = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.btnEat = new System.Windows.Forms.Button();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.btnBack = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -61,7 +57,6 @@
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.progressBar1);
             this.panel1.Controls.Add(this.btnSendRequest);
-            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label4);
@@ -75,10 +70,7 @@
             this.panel1.Controls.Add(this.tbValue);
             this.panel1.Controls.Add(this.tbParent);
             this.panel1.Controls.Add(this.tbKey);
-            this.panel1.Controls.Add(this.btnBuild);
-            this.panel1.Controls.Add(this.tbJson);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.btnEat);
             this.panel1.Location = new System.Drawing.Point(785, 13);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(515, 664);
@@ -100,23 +92,13 @@
             // 
             // btnSendRequest
             // 
-            this.btnSendRequest.Location = new System.Drawing.Point(69, 367);
+            this.btnSendRequest.Location = new System.Drawing.Point(291, 200);
             this.btnSendRequest.Name = "btnSendRequest";
-            this.btnSendRequest.Size = new System.Drawing.Size(159, 23);
+            this.btnSendRequest.Size = new System.Drawing.Size(159, 64);
             this.btnSendRequest.TabIndex = 26;
             this.btnSendRequest.Text = "Отправить запрос";
             this.btnSendRequest.UseVisualStyleBackColor = true;
             this.btnSendRequest.Click += new System.EventHandler(this.btnSendRequest_Click_1);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(66, 213);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 17);
-            this.label5.TabIndex = 24;
-            this.label5.Text = "JSON:";
             // 
             // label6
             // 
@@ -223,6 +205,7 @@
             this.tbValue.Size = new System.Drawing.Size(81, 20);
             this.tbValue.TabIndex = 15;
             this.tbValue.Text = "0";
+            this.tbValue.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbValue_KeyUp);
             // 
             // tbParent
             // 
@@ -240,24 +223,6 @@
             this.tbKey.TabIndex = 13;
             this.tbKey.Text = "\"categories_id\"";
             // 
-            // btnBuild
-            // 
-            this.btnBuild.Location = new System.Drawing.Point(275, 328);
-            this.btnBuild.Name = "btnBuild";
-            this.btnBuild.Size = new System.Drawing.Size(175, 23);
-            this.btnBuild.TabIndex = 12;
-            this.btnBuild.Text = "Построить";
-            this.btnBuild.UseVisualStyleBackColor = true;
-            // 
-            // tbJson
-            // 
-            this.tbJson.Location = new System.Drawing.Point(147, 210);
-            this.tbJson.Multiline = true;
-            this.tbJson.Name = "tbJson";
-            this.tbJson.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbJson.Size = new System.Drawing.Size(303, 97);
-            this.tbJson.TabIndex = 11;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(291, 486);
@@ -266,15 +231,6 @@
             this.button1.TabIndex = 10;
             this.button1.Text = "Накормить";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // btnEat
-            // 
-            this.btnEat.Location = new System.Drawing.Point(69, 328);
-            this.btnEat.Name = "btnEat";
-            this.btnEat.Size = new System.Drawing.Size(159, 23);
-            this.btnEat.TabIndex = 9;
-            this.btnEat.Text = "Накормить";
-            this.btnEat.UseVisualStyleBackColor = true;
             // 
             // MainPanel
             // 
@@ -320,7 +276,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button btnSendRequest;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
@@ -334,10 +289,7 @@
         private System.Windows.Forms.TextBox tbValue;
         private System.Windows.Forms.TextBox tbParent;
         private System.Windows.Forms.TextBox tbKey;
-        private System.Windows.Forms.Button btnBuild;
-        private System.Windows.Forms.TextBox tbJson;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnEat;
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.Button btnBack;
     }

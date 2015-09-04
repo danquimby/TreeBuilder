@@ -102,6 +102,15 @@ namespace TreeBuilder
             CreateTreeNodes(tbValue.Text, SendRequset(reqest));
         }
 
+        private string GenerateRequest(string id)
+        {
+            string reqest = tbAsk.Text;
+            reqest += "?advancedFilter=[{";
+            reqest += tbParent.Text + ": ";
+            reqest += id;
+            reqest += "}]";
+            return reqest;
+        }
         private void CreateTreeNodes(string rootNumber, dynamic data)
         {
             MainPanel.Controls.Clear();
@@ -169,6 +178,11 @@ namespace TreeBuilder
                 btnSendRequest_Click_1(null, null);
             }
             btnBack.Enabled = HistoryNode.Count > 1;
+        }
+
+        private void tbValue_KeyUp(object sender, KeyEventArgs e)
+        {
+            button2_Click(null, null);
         }
     }
     public class EventData : DynamicObject, ICloneable
