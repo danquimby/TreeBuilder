@@ -42,16 +42,22 @@ namespace TreeBuilder
         }
         List<Node> list = new List<Node>();
 
-        public void ListSort(List<Node> listNodes, string keySort)
+        public void ListSort(List<Node> listNodes, string keySort, TreeNodeCollection nodesCollection)
         {
+
           List<Node> temp = new List<Node>();
             temp.AddRange(listNodes.FindAll(xx=>xx.parent==keySort));
             if (temp.Count > 0)
             {
-                temp.ForEach(AddToTree);
+                foreach (Node nod in temp)
+                {
+                             AddToTree(nod,nodesCollection);
+                }
+                
                 foreach (Node item in temp)
                 {
-                    ListSort(listNodes, item.key);
+                   TreeNodeCollection nodessCollection = nodesCollection[item.key].Nodes;
+                    ListSort(listNodes, item.key,nodessCollection);
                 }
             }
             else return;
@@ -73,7 +79,7 @@ namespace TreeBuilder
             else result= false;
             return result;
         }
-        public void AddToTree(Node node)
+        public void AddToTree(Node node, TreeNodeCollection nodesCollection)
         {
             string s = " ";
             if (Checker(treeView1.Nodes, node.parent, ref s))
