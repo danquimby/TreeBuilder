@@ -29,231 +29,317 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TreeBuilder));
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.btnEat = new System.Windows.Forms.Button();
-            this.tbJson = new System.Windows.Forms.TextBox();
-            this.btnBuild = new System.Windows.Forms.Button();
-            this.tbKey = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tbParent = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tbStart = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbAsk = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.tbQuery = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnSendRequest = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.btnSendRequest = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbQuery = new System.Windows.Forms.TextBox();
+            this.tbAsk = new System.Windows.Forms.TextBox();
+            this.tbStart = new System.Windows.Forms.TextBox();
+            this.tbValue = new System.Windows.Forms.TextBox();
+            this.tbParent = new System.Windows.Forms.TextBox();
+            this.tbKey = new System.Windows.Forms.TextBox();
+            this.btnBuild = new System.Windows.Forms.Button();
+            this.tbJson = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnEat = new System.Windows.Forms.Button();
+            this.MainPanel = new System.Windows.Forms.Panel();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // treeView1
+            // panel1
             // 
-            this.treeView1.Location = new System.Drawing.Point(12, 12);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(980, 665);
-            this.treeView1.TabIndex = 0;
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.progressBar1);
+            this.panel1.Controls.Add(this.btnSendRequest);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.tbQuery);
+            this.panel1.Controls.Add(this.tbAsk);
+            this.panel1.Controls.Add(this.tbStart);
+            this.panel1.Controls.Add(this.tbValue);
+            this.panel1.Controls.Add(this.tbParent);
+            this.panel1.Controls.Add(this.tbKey);
+            this.panel1.Controls.Add(this.btnBuild);
+            this.panel1.Controls.Add(this.tbJson);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnEat);
+            this.panel1.Location = new System.Drawing.Point(785, 13);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(515, 664);
+            this.panel1.TabIndex = 1;
             // 
-            // btnEat
+            // textBox1
             // 
-            this.btnEat.Location = new System.Drawing.Point(1002, 343);
-            this.btnEat.Name = "btnEat";
-            this.btnEat.Size = new System.Drawing.Size(159, 23);
-            this.btnEat.TabIndex = 1;
-            this.btnEat.Text = "Накормить";
-            this.btnEat.UseVisualStyleBackColor = true;
-            this.btnEat.Click += new System.EventHandler(this.btnEat_Click);
+            this.textBox1.Location = new System.Drawing.Point(182, 440);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(264, 20);
+            this.textBox1.TabIndex = 28;
             // 
-            // tbJson
+            // progressBar1
             // 
-            this.tbJson.Location = new System.Drawing.Point(1080, 225);
-            this.tbJson.Multiline = true;
-            this.tbJson.Name = "tbJson";
-            this.tbJson.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbJson.Size = new System.Drawing.Size(303, 97);
-            this.tbJson.TabIndex = 2;
+            this.progressBar1.Location = new System.Drawing.Point(65, 639);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(381, 23);
+            this.progressBar1.TabIndex = 27;
             // 
-            // btnBuild
+            // btnSendRequest
             // 
-            this.btnBuild.Location = new System.Drawing.Point(1208, 343);
-            this.btnBuild.Name = "btnBuild";
-            this.btnBuild.Size = new System.Drawing.Size(175, 23);
-            this.btnBuild.TabIndex = 3;
-            this.btnBuild.Text = "Построить";
-            this.btnBuild.UseVisualStyleBackColor = true;
-            this.btnBuild.Click += new System.EventHandler(this.btnBuild_Click);
-            // 
-            // tbKey
-            // 
-            this.tbKey.Location = new System.Drawing.Point(1080, 18);
-            this.tbKey.Name = "tbKey";
-            this.tbKey.Size = new System.Drawing.Size(303, 20);
-            this.tbKey.TabIndex = 4;
-            this.tbKey.Text = "\"categories_id\"";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(999, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 17);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Ключ:";
-            // 
-            // tbParent
-            // 
-            this.tbParent.Location = new System.Drawing.Point(1080, 43);
-            this.tbParent.Name = "tbParent";
-            this.tbParent.Size = new System.Drawing.Size(303, 20);
-            this.tbParent.TabIndex = 4;
-            this.tbParent.Text = "\"parent_id\"";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(999, 44);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 17);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Родитель:";
-            // 
-            // tbStart
-            // 
-            this.tbStart.Location = new System.Drawing.Point(1080, 69);
-            this.tbStart.Name = "tbStart";
-            this.tbStart.Size = new System.Drawing.Size(303, 20);
-            this.tbStart.TabIndex = 4;
-            this.tbStart.Text = "0";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(999, 70);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 17);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Старт:";
-            // 
-            // tbAsk
-            // 
-            this.tbAsk.Location = new System.Drawing.Point(1080, 95);
-            this.tbAsk.Multiline = true;
-            this.tbAsk.Name = "tbAsk";
-            this.tbAsk.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbAsk.Size = new System.Drawing.Size(303, 54);
-            this.tbAsk.TabIndex = 4;
-            this.tbAsk.Text = "http://svk.rezerv.odezhda-master.ru/api/categories";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(999, 95);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 17);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Запрос:";
+            this.btnSendRequest.Location = new System.Drawing.Point(69, 367);
+            this.btnSendRequest.Name = "btnSendRequest";
+            this.btnSendRequest.Size = new System.Drawing.Size(159, 23);
+            this.btnSendRequest.TabIndex = 26;
+            this.btnSendRequest.Text = "Отправить запрос";
+            this.btnSendRequest.UseVisualStyleBackColor = true;
+            this.btnSendRequest.Click += new System.EventHandler(this.btnSendRequest_Click_1);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(999, 228);
+            this.label5.Location = new System.Drawing.Point(66, 213);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 17);
-            this.label5.TabIndex = 5;
+            this.label5.TabIndex = 24;
             this.label5.Text = "JSON:";
-            // 
-            // tbQuery
-            // 
-            this.tbQuery.Location = new System.Drawing.Point(1080, 155);
-            this.tbQuery.Multiline = true;
-            this.tbQuery.Name = "tbQuery";
-            this.tbQuery.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbQuery.Size = new System.Drawing.Size(303, 54);
-            this.tbQuery.TabIndex = 4;
-            this.tbQuery.Text = "per-page=100";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(999, 155);
+            this.label6.Location = new System.Drawing.Point(66, 140);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(51, 17);
-            this.label6.TabIndex = 5;
+            this.label6.TabIndex = 23;
             this.label6.Text = "Query:";
             // 
-            // btnSendRequest
+            // label7
             // 
-            this.btnSendRequest.Location = new System.Drawing.Point(1002, 382);
-            this.btnSendRequest.Name = "btnSendRequest";
-            this.btnSendRequest.Size = new System.Drawing.Size(159, 23);
-            this.btnSendRequest.TabIndex = 6;
-            this.btnSendRequest.Text = "Отправить запрос";
-            this.btnSendRequest.UseVisualStyleBackColor = true;
-            this.btnSendRequest.Click += new System.EventHandler(this.btnSendRequest_Click);
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(66, 443);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(110, 17);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Filename JSON:";
             // 
-            // progressBar1
+            // label4
             // 
-            this.progressBar1.Location = new System.Drawing.Point(1002, 428);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(381, 23);
-            this.progressBar1.TabIndex = 7;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(66, 80);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(61, 17);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "Request";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(66, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 17);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Старт:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Location = new System.Drawing.Point(67, 6);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(45, 17);
+            this.label8.TabIndex = 25;
+            this.label8.Text = "Name";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(66, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 17);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "Parent";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(238, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 17);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Value";
+            // 
+            // tbQuery
+            // 
+            this.tbQuery.Location = new System.Drawing.Point(147, 140);
+            this.tbQuery.Multiline = true;
+            this.tbQuery.Name = "tbQuery";
+            this.tbQuery.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbQuery.Size = new System.Drawing.Size(303, 54);
+            this.tbQuery.TabIndex = 18;
+            this.tbQuery.Text = "per-page=100";
+            // 
+            // tbAsk
+            // 
+            this.tbAsk.Location = new System.Drawing.Point(147, 80);
+            this.tbAsk.Multiline = true;
+            this.tbAsk.Name = "tbAsk";
+            this.tbAsk.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbAsk.Size = new System.Drawing.Size(303, 54);
+            this.tbAsk.TabIndex = 17;
+            this.tbAsk.Text = "http://svk.rezerv.odezhda-master.ru/api/categories";
+            // 
+            // tbStart
+            // 
+            this.tbStart.Location = new System.Drawing.Point(147, 54);
+            this.tbStart.Name = "tbStart";
+            this.tbStart.Size = new System.Drawing.Size(303, 20);
+            this.tbStart.TabIndex = 16;
+            this.tbStart.Text = "0";
+            // 
+            // tbValue
+            // 
+            this.tbValue.Location = new System.Drawing.Point(291, 26);
+            this.tbValue.Name = "tbValue";
+            this.tbValue.Size = new System.Drawing.Size(81, 20);
+            this.tbValue.TabIndex = 15;
+            this.tbValue.Text = "0";
+            // 
+            // tbParent
+            // 
+            this.tbParent.Location = new System.Drawing.Point(147, 28);
+            this.tbParent.Name = "tbParent";
+            this.tbParent.Size = new System.Drawing.Size(81, 20);
+            this.tbParent.TabIndex = 14;
+            this.tbParent.Text = "\"parent_id\"";
+            // 
+            // tbKey
+            // 
+            this.tbKey.Location = new System.Drawing.Point(147, 3);
+            this.tbKey.Name = "tbKey";
+            this.tbKey.Size = new System.Drawing.Size(303, 20);
+            this.tbKey.TabIndex = 13;
+            this.tbKey.Text = "\"categories_id\"";
+            // 
+            // btnBuild
+            // 
+            this.btnBuild.Location = new System.Drawing.Point(275, 328);
+            this.btnBuild.Name = "btnBuild";
+            this.btnBuild.Size = new System.Drawing.Size(175, 23);
+            this.btnBuild.TabIndex = 12;
+            this.btnBuild.Text = "Построить";
+            this.btnBuild.UseVisualStyleBackColor = true;
+            // 
+            // tbJson
+            // 
+            this.tbJson.Location = new System.Drawing.Point(147, 210);
+            this.tbJson.Multiline = true;
+            this.tbJson.Name = "tbJson";
+            this.tbJson.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbJson.Size = new System.Drawing.Size(303, 97);
+            this.tbJson.TabIndex = 11;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(291, 486);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(159, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Накормить";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btnEat
+            // 
+            this.btnEat.Location = new System.Drawing.Point(69, 328);
+            this.btnEat.Name = "btnEat";
+            this.btnEat.Size = new System.Drawing.Size(159, 23);
+            this.btnEat.TabIndex = 9;
+            this.btnEat.Text = "Накормить";
+            this.btnEat.UseVisualStyleBackColor = true;
+            // 
+            // MainPanel
+            // 
+            this.MainPanel.AutoScroll = true;
+            this.MainPanel.Location = new System.Drawing.Point(13, 67);
+            this.MainPanel.Name = "MainPanel";
+            this.MainPanel.Size = new System.Drawing.Size(753, 608);
+            this.MainPanel.TabIndex = 2;
+            this.MainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
+            // 
+            // btnBack
+            // 
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnBack.ForeColor = System.Drawing.Color.Red;
+            this.btnBack.Location = new System.Drawing.Point(13, 19);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(78, 42);
+            this.btnBack.TabIndex = 9;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.button2_Click);
             // 
             // TreeBuilder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1395, 689);
-            this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.btnSendRequest);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.tbQuery);
-            this.Controls.Add(this.tbAsk);
-            this.Controls.Add(this.tbStart);
-            this.Controls.Add(this.tbParent);
-            this.Controls.Add(this.tbKey);
-            this.Controls.Add(this.btnBuild);
-            this.Controls.Add(this.tbJson);
-            this.Controls.Add(this.btnEat);
-            this.Controls.Add(this.treeView1);
+            this.ClientSize = new System.Drawing.Size(1312, 689);
+            this.Controls.Add(this.MainPanel);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btnBack);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TreeBuilder";
             this.Text = "TreeBuilder";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        public System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.Button btnEat;
-        private System.Windows.Forms.TextBox tbJson;
-        private System.Windows.Forms.Button btnBuild;
-        private System.Windows.Forms.TextBox tbKey;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tbParent;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tbStart;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbAsk;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox tbQuery;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnSendRequest;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button btnSendRequest;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbQuery;
+        private System.Windows.Forms.TextBox tbAsk;
+        private System.Windows.Forms.TextBox tbStart;
+        private System.Windows.Forms.TextBox tbValue;
+        private System.Windows.Forms.TextBox tbParent;
+        private System.Windows.Forms.TextBox tbKey;
+        private System.Windows.Forms.Button btnBuild;
+        private System.Windows.Forms.TextBox tbJson;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnEat;
+        private System.Windows.Forms.Panel MainPanel;
+        private System.Windows.Forms.Button btnBack;
     }
 }
 
