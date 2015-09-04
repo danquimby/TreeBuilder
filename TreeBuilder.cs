@@ -42,7 +42,7 @@ namespace TreeBuilder
         }
         List<Node> list = new List<Node>();
 
-        public void ListSort(List<Node> listNodes, string keySort, TreeNodeCollection nodesCollection)
+        public void ListSort(List<Node> listNodes, string keySort)
         {
 
           List<Node> temp = new List<Node>();
@@ -51,13 +51,13 @@ namespace TreeBuilder
             {
                 foreach (Node nod in temp)
                 {
-                             AddToTree(nod,nodesCollection);
+                             AddToTree(nod);
                 }
                 
                 foreach (Node item in temp)
                 {
-                   TreeNodeCollection nodessCollection = nodesCollection[item.key].Nodes;
-                    ListSort(listNodes, item.key,nodessCollection);
+                  // TreeNodeCollection nodessCollection = nodesCollection[item.key].Nodes;
+                    ListSort(listNodes, item.key);
                 }
             }
             else return;
@@ -70,16 +70,17 @@ namespace TreeBuilder
                 if (!nodes.ContainsKey(key))
                     foreach (TreeNode node in nodes)
                     {
-                        path += " " + node.Text;
+                        path += " " + node.Name;
                         bool t = Checker(node.Nodes, key, ref path);
                         if (t) { result = t; break; }
+                        else path = path.Remove(path.Length - 1 - node.Name.Length);
 
                     }
                 else { result = true; path += " " + key; }
             else result= false;
             return result;
         }
-        public void AddToTree(Node node, TreeNodeCollection nodesCollection)
+        public void AddToTree(Node node)
         {
             string s = " ";
             if (Checker(treeView1.Nodes, node.parent, ref s))
@@ -184,7 +185,7 @@ namespace TreeBuilder
                         temp = "";
                     }
                 }
-                if (item == '[')
+               /* if (item == '[')
                 {
                     if (help[i - 1] == ':')
                         Console.WriteLine();
@@ -229,7 +230,7 @@ namespace TreeBuilder
                         }
 
                     }
-                    else Console.Write(item);
+                    else Console.Write(item);*/
             }
           //  treeView1.NodeMouseClick += treeView1_NodeMouseClick;
             // treeView1.ExpandAll();
@@ -328,6 +329,7 @@ namespace TreeBuilder
             AddToTree("",tbStart.Text,"Root");
             //list.ForEach((x)=>Console.WriteLine(x.parent+" "+x.key+" "+x.text));
             ListSort(list,tbStart.Text); 
+            treeView1.ExpandAll();
            /* Console.WriteLine();
             list.ForEach((x) => Console.WriteLine(x.parent + " " + x.key + " " + x.text));
             list.ForEach(AddToTree);*/
@@ -335,7 +337,7 @@ namespace TreeBuilder
 
         private void btnSendRequest_Click(object sender, EventArgs e)
         {
-            tbJson.Text = ReqTask().Result as string;
+            ReqTask();
         }
     }
 }
