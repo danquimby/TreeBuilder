@@ -30,23 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TreeBuilder));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.btnSendRequest = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tbQuery = new System.Windows.Forms.TextBox();
             this.tbAsk = new System.Windows.Forms.TextBox();
-            this.tbStart = new System.Windows.Forms.TextBox();
             this.tbValue = new System.Windows.Forms.TextBox();
             this.tbParent = new System.Windows.Forms.TextBox();
             this.tbKey = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.btnBack = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -54,41 +48,21 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.progressBar1);
             this.panel1.Controls.Add(this.btnSendRequest);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.tbQuery);
             this.panel1.Controls.Add(this.tbAsk);
-            this.panel1.Controls.Add(this.tbStart);
             this.panel1.Controls.Add(this.tbValue);
             this.panel1.Controls.Add(this.tbParent);
             this.panel1.Controls.Add(this.tbKey);
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Location = new System.Drawing.Point(785, 13);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(515, 664);
             this.panel1.TabIndex = 1;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(182, 440);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(264, 20);
-            this.textBox1.TabIndex = 28;
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(65, 639);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(381, 23);
-            this.progressBar1.TabIndex = 27;
             // 
             // btnSendRequest
             // 
@@ -110,16 +84,6 @@
             this.label6.TabIndex = 23;
             this.label6.Text = "Query:";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(66, 443);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(110, 17);
-            this.label7.TabIndex = 22;
-            this.label7.Text = "Filename JSON:";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -130,25 +94,15 @@
             this.label4.TabIndex = 21;
             this.label4.Text = "Request";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(66, 55);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 17);
-            this.label3.TabIndex = 20;
-            this.label3.Text = "Старт:";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(67, 6);
+            this.label8.Location = new System.Drawing.Point(24, 6);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(45, 17);
+            this.label8.Size = new System.Drawing.Size(117, 17);
             this.label8.TabIndex = 25;
-            this.label8.Text = "Name";
+            this.label8.Text = "Name Make Tree";
             // 
             // label2
             // 
@@ -190,21 +144,13 @@
             this.tbAsk.TabIndex = 17;
             this.tbAsk.Text = "http://svk.rezerv.odezhda-master.ru/api/categories";
             // 
-            // tbStart
-            // 
-            this.tbStart.Location = new System.Drawing.Point(147, 54);
-            this.tbStart.Name = "tbStart";
-            this.tbStart.Size = new System.Drawing.Size(303, 20);
-            this.tbStart.TabIndex = 16;
-            this.tbStart.Text = "0";
-            // 
             // tbValue
             // 
             this.tbValue.Location = new System.Drawing.Point(291, 26);
             this.tbValue.Name = "tbValue";
             this.tbValue.Size = new System.Drawing.Size(81, 20);
             this.tbValue.TabIndex = 15;
-            this.tbValue.Text = "0";
+            this.tbValue.Text = "327";
             this.tbValue.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbValue_KeyUp);
             // 
             // tbParent
@@ -221,16 +167,7 @@
             this.tbKey.Name = "tbKey";
             this.tbKey.Size = new System.Drawing.Size(303, 20);
             this.tbKey.TabIndex = 13;
-            this.tbKey.Text = "\"categories_id\"";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(291, 486);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(159, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Накормить";
-            this.button1.UseVisualStyleBackColor = true;
+            this.tbKey.Text = "categories_id";
             // 
             // MainPanel
             // 
@@ -273,23 +210,17 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button btnSendRequest;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbQuery;
         private System.Windows.Forms.TextBox tbAsk;
-        private System.Windows.Forms.TextBox tbStart;
         private System.Windows.Forms.TextBox tbValue;
         private System.Windows.Forms.TextBox tbParent;
         private System.Windows.Forms.TextBox tbKey;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.Button btnBack;
     }

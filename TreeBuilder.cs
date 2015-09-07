@@ -20,12 +20,20 @@ namespace TreeBuilder
 {
     public partial class TreeBuilder : Form
     {
+        List<Color> ColorIndex = new List<Color>(); 
         private List<Button> ListItems = new List<Button>();
         List<string> HistoryNode = new List<string>();
         public TreeBuilder()
         {
             InitializeComponent();
             btnBack.Enabled = HistoryNode.Count > 0;
+            ColorIndex.Add(Color.Brown);
+            ColorIndex.Add(Color.BlueViolet);
+            ColorIndex.Add(Color.CadetBlue);
+            ColorIndex.Add(Color.Chartreuse);
+            ColorIndex.Add(Color.Coral);
+            ColorIndex.Add(Color.Cyan);
+
         }
 
         private dynamic Deserialise(string _json)
@@ -93,13 +101,12 @@ namespace TreeBuilder
         {
             HistoryNode.Add(tbValue.Text);
             btnBack.Enabled = HistoryNode.Count > 1;
-
-            string reqest = tbAsk.Text;
-            reqest += "?advancedFilter=[{";
-            reqest += tbParent.Text + ": ";
-            reqest += tbValue.Text;
-            reqest += "}]";
-            CreateTreeNodes(tbValue.Text, SendRequset(reqest));
+            MainPanel.Controls.Clear();
+            ListItems.Clear();
+            int StepW = 1;
+            int StepH = 1;
+            //string reqest = GenerateRequest(tbValue.Text);
+            CreateTreeNodesEx(tbValue.Text, new Point(0,0));
         }
 
         private string GenerateRequest(string id)
@@ -111,29 +118,32 @@ namespace TreeBuilder
             reqest += "}]";
             return reqest;
         }
-        private void CreateTreeNodes(string rootNumber, dynamic data)
+        private Point CreateTreeNodesEx(string rootNumber, Point point)
         {
-            MainPanel.Controls.Clear();
-            ListItems.Clear();
-            NodeItem itemNode = new NodeItem("root", rootNumber, new Point(10, 10));
-            itemNode.MouseClick += ClickToNode;
-            MainPanel.Controls.Add(itemNode);
-            ListItems.Add(itemNode);
-            if (data == null) return;
-            int StepW = 1;
-            int StepH = 1;
-            RecurceMakeTree(data, ref StepW, ref StepH);
-        }
-
-        private void RecurceMakeTree(dynamic data, ref int StepW, ref int StepH)
-        {
+            CreateAndPushNode(rootNumber, point);
+            dynamic data = SendRequset(GenerateRequest(rootNumber));
+            Point tmpPoint = new Point(point.X +1, point.Y);
             foreach (var item in data.items)
             {
-                NodeItem node = new NodeItem("root", item["categories_id"].ToString(), new Point(10 + StepW * 100, 50 * StepH));
-                node.MouseUp += ClickToNode;
-                MainPanel.Controls.Add(node);
-                StepH++;
+                string number = item[tbKey.Text].ToString();
+                tmpPoint = new Point(tmpPoint.X, tmpPoint.Y + 1);
+                tmpPoint = CreateTreeNodesEx(number, tmpPoint);
+                if (number == "57")
+                    Console.WriteLine("dd");
+                Control[] ww = MainPanel.Controls.Find(number, true);
+                if (ww.Count() == 0)
+                    CreateAndPushNode(number, tmpPoint);
             }
+            point = new Point(point.X, tmpPoint.Y);
+            return point;
+        }
+
+        private void CreateAndPushNode(string id, Point point)
+        {
+            NodeItem node = new NodeItem(id, id, new Point(10 + point.X * 100, 50 * point.Y));
+            node.MouseUp += ClickToNode;
+            node.BackColor = ColorIndex[point.X];
+            MainPanel.Controls.Add(node);
         }
         private void ClickToNode(object o, MouseEventArgs e)
         {
