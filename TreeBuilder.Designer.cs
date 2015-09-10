@@ -48,6 +48,9 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.btnSendRequest);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label4);
@@ -59,9 +62,9 @@
             this.panel1.Controls.Add(this.tbValue);
             this.panel1.Controls.Add(this.tbParent);
             this.panel1.Controls.Add(this.tbKey);
-            this.panel1.Location = new System.Drawing.Point(785, 13);
+            this.panel1.Location = new System.Drawing.Point(842, 13);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(515, 664);
+            this.panel1.Size = new System.Drawing.Size(458, 664);
             this.panel1.TabIndex = 1;
             // 
             // btnSendRequest
@@ -142,7 +145,7 @@
             this.tbAsk.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tbAsk.Size = new System.Drawing.Size(303, 54);
             this.tbAsk.TabIndex = 17;
-            this.tbAsk.Text = "http://svk.rezerv.odezhda-master.ru/api/categories";
+            this.tbAsk.Text = "http://api.odezhda-master.ru/api/categories";
             // 
             // tbValue
             // 
@@ -151,7 +154,6 @@
             this.tbValue.Size = new System.Drawing.Size(81, 20);
             this.tbValue.TabIndex = 15;
             this.tbValue.Text = "327";
-            this.tbValue.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbValue_KeyUp);
             // 
             // tbParent
             // 
@@ -171,10 +173,13 @@
             // 
             // MainPanel
             // 
+            this.MainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MainPanel.AutoScroll = true;
             this.MainPanel.Location = new System.Drawing.Point(13, 67);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(753, 608);
+            this.MainPanel.Size = new System.Drawing.Size(823, 608);
             this.MainPanel.TabIndex = 2;
             this.MainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
             // 

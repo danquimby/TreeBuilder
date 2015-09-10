@@ -20,7 +20,7 @@ namespace TreeBuilder
 {
     public partial class TreeBuilder : Form
     {
-        List<Color> ColorIndex = new List<Color>(); 
+        List<Color> ColorIndex = new List<Color>();
         private List<Button> ListItems = new List<Button>();
         List<string> HistoryNode = new List<string>();
         public TreeBuilder()
@@ -78,22 +78,29 @@ namespace TreeBuilder
             httpWeb.Headers.Add(HttpRequestHeader.Authorization,
                     "Basic YWthZG9tQGdtYWlsLmNvbTpZVGcxWmpBMU1tUTFNelZoTW1JeFpESTVabUZqTmpZNVpUazBPVFUyTWprNk1tUQ");
 
-            HttpWebResponse httpResponse = httpWeb.GetResponse() as HttpWebResponse;
-            if (httpResponse == null)
+            try
             {
-                return new Exception("error");
+                HttpWebResponse httpResponse = httpWeb.GetResponse() as HttpWebResponse;
+                if (httpResponse == null)
+                {
+                    return new Exception("error");
+                }
+                using (StreamReader streamReader = new StreamReader(httpResponse.GetResponseStream(), Encoding.UTF8))
+                {
+                    result = streamReader.ReadToEnd();
+                }
+                Dictionary<string, string> headers = new Dictionary<string, string>();
+                for (int i = 0; i < httpResponse.Headers.Count; ++i)
+                    headers.Add(httpResponse.Headers.Keys[i], httpResponse.Headers[i]);
+                ev.headers = headers;
+                ev.successful = true;
+                ev.items = Deserialise(result);
             }
-            using (StreamReader streamReader = new StreamReader(httpResponse.GetResponseStream(), Encoding.UTF8))
+            catch (Exception e)
             {
-                result = streamReader.ReadToEnd();
+                MessageBox.Show(e.ToString());
             }
-            Dictionary<string, string> headers = new Dictionary<string, string>();
-            for (int i = 0; i < httpResponse.Headers.Count; ++i)
-                headers.Add(httpResponse.Headers.Keys[i], httpResponse.Headers[i]);
 
-            ev.headers = headers;
-            ev.successful = true;
-            ev.items = Deserialise(result);
             return ev;
         }
 
@@ -106,50 +113,66 @@ namespace TreeBuilder
             int StepW = 1;
             int StepH = 1;
             //string reqest = GenerateRequest(tbValue.Text);
-            CreateTreeNodesEx(tbValue.Text, new Point(0,0));
+            CreateTreeNodesEx(tbValue.Text, "",new Point(0, 0));
         }
 
         private string GenerateRequest(string id)
         {
             string reqest = tbAsk.Text;
-            reqest += "?advancedFilter=[{";
+            reqest += "?expand=categoriesDescription&advancedFilter=[{";
             reqest += tbParent.Text + ": ";
             reqest += id;
             reqest += "}]";
             return reqest;
         }
-        private Point CreateTreeNodesEx(string rootNumber, Point point)
+        private Point CreateTreeNodesEx(string rootNumber, string rootDescription, Point point)
         {
-            CreateAndPushNode(rootNumber, point);
             dynamic data = SendRequset(GenerateRequest(rootNumber));
-            Point tmpPoint = new Point(point.X +1, point.Y);
+            if (rootDescription == String.Empty)
+                rootDescription = ParseFromDynamicData(data.items, 0, "categoriesDescription", "categories_description").ToString();
+            if (rootDescription == String.Empty)
+                rootDescription = ParseFromDynamicData(data.items, 0, "categoriesDescription", "categories_heading_title").ToString();
+            if (rootDescription == String.Empty)
+                rootDescription = "нет описание";
+
+            CreateAndPushNode(rootNumber, rootDescription, point);
+            Point tmpPoint = new Point(point.X + 1, point.Y);
             foreach (var item in data.items)
             {
+                string description = ParseFromDynamicData(item, "categoriesDescription", "categories_description").ToString();
+                if (description == String.Empty)
+                    description = ParseFromDynamicData(item, "categoriesDescription", "categories_heading_title").ToString();
+                if (description == String.Empty)
+                    description = "нет описание";
+
+                Console.WriteLine("parse dd " + description);
                 string number = item[tbKey.Text].ToString();
                 tmpPoint = new Point(tmpPoint.X, tmpPoint.Y + 1);
-                tmpPoint = CreateTreeNodesEx(number, tmpPoint);
+                tmpPoint = CreateTreeNodesEx(number, description, tmpPoint);
                 if (number == "57")
                     Console.WriteLine("dd");
                 Control[] ww = MainPanel.Controls.Find(number, true);
                 if (ww.Count() == 0)
-                    CreateAndPushNode(number, tmpPoint);
+                    CreateAndPushNode(number,description, tmpPoint);
             }
             point = new Point(point.X, tmpPoint.Y);
             return point;
         }
 
-        private void CreateAndPushNode(string id, Point point)
+        private void CreateAndPushNode(string id,string text, Point point)
         {
-            NodeItem node = new NodeItem(id, id, new Point(10 + point.X * 100, 50 * point.Y));
+            string complexName = id + "\n" + text;
+            NodeItem node = new NodeItem(id,complexName, new Point(10 + point.X * 200, 70 * point.Y));
             node.MouseUp += ClickToNode;
             node.BackColor = ColorIndex[point.X];
             MainPanel.Controls.Add(node);
         }
         private void ClickToNode(object o, MouseEventArgs e)
         {
+/*
             if (e.Button == MouseButtons.Right)
             {
-                MessageBox.Show("eee");
+//                Clipboard.SetText(NameButton);
             }
             else
             {
@@ -158,6 +181,7 @@ namespace TreeBuilder
                 tbValue.Text = item.Text;
                 btnSendRequest_Click_1(null, null);
             }
+*/
         }
         private void MainPanel_Paint(object sender, PaintEventArgs e)
         {
@@ -193,6 +217,44 @@ namespace TreeBuilder
         private void tbValue_KeyUp(object sender, KeyEventArgs e)
         {
             button2_Click(null, null);
+        }
+        public dynamic ParseFromDynamicData(dynamic data, params object[] keys)
+        {
+
+            if (keys.Length == 0) return String.Empty;
+            foreach (object key in keys)
+            {
+                try
+                {
+                    if ((key is string) && !data.ContainsKey(key.ToString()))
+                    {
+                        //MessageBox.Show("Не корректные данные от сервера для ключа " + KeyHistory + "/" + key);
+                        return String.Empty;
+                    }
+                }
+                catch
+                {
+                    return String.Empty;
+                }
+
+                try
+                {
+                    if ((key is int) && Convert.ToInt32(key.ToString()) >= data.Length)
+                    {
+                        return String.Empty;
+                    }
+                }
+                catch
+                {
+                    return "";
+                }
+                if (key is string)
+                    data = data[key.ToString()];
+                else
+                    data = data[Convert.ToInt32(key)];
+            }
+
+            return data ?? String.Empty;
         }
     }
     public class EventData : DynamicObject, ICloneable
@@ -271,5 +333,7 @@ namespace TreeBuilder
                 return formatter.Deserialize(stream);
             }
         }
+
     }
 }
+
