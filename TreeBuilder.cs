@@ -130,6 +130,7 @@ namespace TreeBuilder
 
         private void AddCategory(string categoryNumebr, string categoryDescription, int x)
         {
+            CategoryToText += '\r';
             CategoryToText += '\n';
             for (int i = 0; i < x * 2; i++)
                 CategoryToText += ' ';
