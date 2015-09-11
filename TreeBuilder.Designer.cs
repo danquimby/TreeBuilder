@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TreeBuilder));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnToText = new System.Windows.Forms.Button();
             this.btnSendRequest = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -43,6 +44,7 @@
             this.tbKey = new System.Windows.Forms.TextBox();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.btnBack = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +53,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.btnToText);
             this.panel1.Controls.Add(this.btnSendRequest);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label4);
@@ -66,6 +69,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(458, 664);
             this.panel1.TabIndex = 1;
+            // 
+            // btnToText
+            // 
+            this.btnToText.Location = new System.Drawing.Point(291, 283);
+            this.btnToText.Name = "btnToText";
+            this.btnToText.Size = new System.Drawing.Size(159, 42);
+            this.btnToText.TabIndex = 27;
+            this.btnToText.Text = "Експорт в txt";
+            this.btnToText.UseVisualStyleBackColor = true;
+            this.btnToText.Click += new System.EventHandler(this.btnToText_Click);
             // 
             // btnSendRequest
             // 
@@ -228,6 +241,8 @@
         private System.Windows.Forms.TextBox tbKey;
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnToText;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

@@ -23,6 +23,7 @@ namespace TreeBuilder
         List<Color> ColorIndex = new List<Color>();
         private List<Button> ListItems = new List<Button>();
         List<string> HistoryNode = new List<string>();
+        private string CategoryToText = "";
         public TreeBuilder()
         {
             InitializeComponent();
@@ -112,6 +113,7 @@ namespace TreeBuilder
             ListItems.Clear();
             int StepW = 1;
             int StepH = 1;
+            CategoryToText = "";
             //string reqest = GenerateRequest(tbValue.Text);
             CreateTreeNodesEx(tbValue.Text, "",new Point(0, 0));
         }
@@ -125,6 +127,17 @@ namespace TreeBuilder
             reqest += "}]";
             return reqest;
         }
+
+        private void AddCategory(string categoryNumebr, string categoryDescription, int x)
+        {
+            CategoryToText += '\n';
+            for (int i = 0; i < x * 2; i++)
+                CategoryToText += ' ';
+            CategoryToText += categoryNumebr;
+            CategoryToText += " - ";
+            CategoryToText += categoryDescription;
+
+        }
         private Point CreateTreeNodesEx(string rootNumber, string rootDescription, Point point)
         {
             dynamic data = SendRequset(GenerateRequest(rootNumber));
@@ -134,7 +147,7 @@ namespace TreeBuilder
                 rootDescription = ParseFromDynamicData(data.items, 0, "categoriesDescription", "categories_heading_title").ToString();
             if (rootDescription == String.Empty)
                 rootDescription = "нет описание";
-
+            AddCategory(rootNumber, rootDescription, point.X);
             CreateAndPushNode(rootNumber, rootDescription, point);
             Point tmpPoint = new Point(point.X + 1, point.Y);
             foreach (var item in data.items)
@@ -153,7 +166,10 @@ namespace TreeBuilder
                     Console.WriteLine("dd");
                 Control[] ww = MainPanel.Controls.Find(number, true);
                 if (ww.Count() == 0)
-                    CreateAndPushNode(number,description, tmpPoint);
+                {
+                    AddCategory(rootNumber, rootDescription, point.X);
+                    CreateAndPushNode(number, description, tmpPoint);
+                }
             }
             point = new Point(point.X, tmpPoint.Y);
             return point;
@@ -256,6 +272,22 @@ namespace TreeBuilder
 
             return data ?? String.Empty;
         }
+
+        private void btnToText_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.FileName = "category.txt";
+            DialogResult result = saveFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                Console.WriteLine(saveFileDialog1.FileName);
+
+                using (StreamWriter outfile = new StreamWriter(saveFileDialog1.FileName, true))
+                {
+                    outfile.WriteAsync(CategoryToText);
+                }
+            }
+        }
+        
     }
     public class EventData : DynamicObject, ICloneable
     {
