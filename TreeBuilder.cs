@@ -23,7 +23,8 @@ namespace TreeBuilder
         List<Color> ColorIndex = new List<Color>();
         private List<Button> ListItems = new List<Button>();
         List<string> HistoryNode = new List<string>();
-        private string CategoryToText = "";
+        private readonly List<string> ListOfAllCategory = new List<string>();
+        private readonly List<string> ListOfAllParentCategory = new List<string>(); 
         public TreeBuilder()
         {
             InitializeComponent();
@@ -113,9 +114,9 @@ namespace TreeBuilder
             ListItems.Clear();
             int StepW = 1;
             int StepH = 1;
-            CategoryToText = "";
+            ListOfAllCategory.Clear();
             //string reqest = GenerateRequest(tbValue.Text);
-            CreateTreeNodesEx(tbValue.Text, "",new Point(0, 0));
+            CreateTreeNodesEx(tbValue.Text, "", new Point(0, 0));
         }
 
         private string GenerateRequest(string id)
@@ -124,24 +125,31 @@ namespace TreeBuilder
             reqest += "?expand=categoriesDescription&advancedFilter=[{";
             reqest += tbParent.Text + ": ";
             reqest += id;
-            reqest += "}]";
+            reqest += "},{\"categories_status\": 1}]";
             return reqest;
         }
 
         private void AddCategory(string categoryNumebr, string categoryDescription, int x)
         {
-            CategoryToText += '\r';
-            CategoryToText += '\n';
+            string category = "";
+            category += '\r';
+            category += '\n';
             for (int i = 0; i < x * 2; i++)
-                CategoryToText += ' ';
-            CategoryToText += categoryNumebr;
-            CategoryToText += " - ";
-            CategoryToText += categoryDescription;
+                category += ' ';
+            category += categoryNumebr;
+            category += " - ";
+            category += categoryDescription;
 
+            ListOfAllCategory.Add(category);
+            if (categoryDescription != String.Empty)
+                ListOfAllParentCategory.Add(categoryDescription);
         }
         private Point CreateTreeNodesEx(string rootNumber, string rootDescription, Point point)
         {
             dynamic data = SendRequset(GenerateRequest(rootNumber));
+
+            if (rootDescription == String.Empty)
+                rootDescription = ParseFromDynamicData(data.items, 0, "categoriesDescription", "categories_name").ToString();
             if (rootDescription == String.Empty)
                 rootDescription = ParseFromDynamicData(data.items, 0, "categoriesDescription", "categories_description").ToString();
             if (rootDescription == String.Empty)
@@ -153,7 +161,10 @@ namespace TreeBuilder
             Point tmpPoint = new Point(point.X + 1, point.Y);
             foreach (var item in data.items)
             {
-                string description = ParseFromDynamicData(item, "categoriesDescription", "categories_description").ToString();
+
+                string description = ParseFromDynamicData(item, "categoriesDescription", "categories_name").ToString();
+                if (description == String.Empty)
+                    description = ParseFromDynamicData(item, "categoriesDescription", "categories_description").ToString();
                 if (description == String.Empty)
                     description = ParseFromDynamicData(item, "categoriesDescription", "categories_heading_title").ToString();
                 if (description == String.Empty)
@@ -163,8 +174,7 @@ namespace TreeBuilder
                 string number = item[tbKey.Text].ToString();
                 tmpPoint = new Point(tmpPoint.X, tmpPoint.Y + 1);
                 tmpPoint = CreateTreeNodesEx(number, description, tmpPoint);
-                if (number == "57")
-                    Console.WriteLine("dd");
+
                 Control[] ww = MainPanel.Controls.Find(number, true);
                 if (ww.Count() == 0)
                 {
@@ -176,29 +186,29 @@ namespace TreeBuilder
             return point;
         }
 
-        private void CreateAndPushNode(string id,string text, Point point)
+        private void CreateAndPushNode(string id, string text, Point point)
         {
             string complexName = id + "\n" + text;
-            NodeItem node = new NodeItem(id,complexName, new Point(10 + point.X * 200, 70 * point.Y));
+            NodeItem node = new NodeItem(id, complexName, new Point(10 + point.X * 200, 70 * point.Y));
             node.MouseUp += ClickToNode;
             node.BackColor = ColorIndex[point.X];
             MainPanel.Controls.Add(node);
         }
         private void ClickToNode(object o, MouseEventArgs e)
         {
-/*
-            if (e.Button == MouseButtons.Right)
-            {
-//                Clipboard.SetText(NameButton);
-            }
-            else
-            {
-                NodeItem item = o as NodeItem;
-                if (item == null) return;
-                tbValue.Text = item.Text;
-                btnSendRequest_Click_1(null, null);
-            }
-*/
+            /*
+                        if (e.Button == MouseButtons.Right)
+                        {
+            //                Clipboard.SetText(NameButton);
+                        }
+                        else
+                        {
+                            NodeItem item = o as NodeItem;
+                            if (item == null) return;
+                            tbValue.Text = item.Text;
+                            btnSendRequest_Click_1(null, null);
+                        }
+            */
         }
         private void MainPanel_Paint(object sender, PaintEventArgs e)
         {
@@ -282,13 +292,18 @@ namespace TreeBuilder
             {
                 Console.WriteLine(saveFileDialog1.FileName);
 
+
                 using (StreamWriter outfile = new StreamWriter(saveFileDialog1.FileName, true))
                 {
-                    outfile.WriteAsync(CategoryToText);
+                    for (int i = 0; i < ListOfAllCategory.Count; i++)
+                    {
+                        outfile.WriteLine(ListOfAllCategory[i]);
+                        Console.WriteLine(ListOfAllCategory[i] + (i >= ListOfAllParentCategory.Count ? " " : ListOfAllParentCategory[i]));
+                    }
                 }
             }
         }
-        
+
     }
     public class EventData : DynamicObject, ICloneable
     {

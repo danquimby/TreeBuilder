@@ -166,7 +166,7 @@
             this.tbValue.Name = "tbValue";
             this.tbValue.Size = new System.Drawing.Size(81, 20);
             this.tbValue.TabIndex = 15;
-            this.tbValue.Text = "327";
+            this.tbValue.Text = "0";
             // 
             // tbParent
             // 
